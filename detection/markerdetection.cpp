@@ -7,7 +7,7 @@
 #include <opencv2/calib3d/calib3d.hpp>
 #include <opencv2/aruco.hpp> 
 
-#include "./dict.hpp"
+#include "./dictionary.hpp"
 
 
 using namespace std;
