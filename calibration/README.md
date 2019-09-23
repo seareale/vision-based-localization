@@ -1,5 +1,5 @@
 
-1. make ChArUco Board
+### 1. make ChArUco Board
 <pre>
 g++ -o charucoboard charucoboard.cpp $(pkg-config opencv4 --cflags --libs)  
 
@@ -7,7 +7,7 @@ g++ -o charucoboard charucoboard.cpp $(pkg-config opencv4 --cflags --libs)
 </pre>
 
 created <code>board.jpg</code>
-
-
-2. calibrate
+<br>
+<br>
+### 2. calibrate
 
