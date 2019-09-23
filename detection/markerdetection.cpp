@@ -145,7 +145,7 @@ int main(int argc, char** argv)
 		}
 
 
-		// 4~6
+		// perspective transformation, otsu binarization, pixel counting 
 		vector<vector<Point2f> > detectedMarkers;
 		vector<Mat> detectedMarkersImage;
 		vector<Point2f> square_points;
