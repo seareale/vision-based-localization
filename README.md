@@ -7,8 +7,5 @@ openCV : 4.1.1
 
 
 ----
-<pre>
-$ g++ -o markerdetection markerdetection.cpp $(pkg-config opencv4 --cflags --libs)
-$ ./markerdetection
-</pre>
+
 
