@@ -4,3 +4,7 @@ before do this, create markers and ChArUco board for calibration
 $ g++ -o markerdetection markerdetection.cpp $(pkg-config opencv4 --cflags --libs)
 $ ./markerdetection
 </pre>
+
+Screenshot
+----
+![example](./img/axis.png)
