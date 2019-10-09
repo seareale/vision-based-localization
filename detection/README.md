@@ -7,7 +7,7 @@ $ ./markerdetection
 
 - update(code simplification)  
   - markerdetection.cpp : image -> greyscale -> contour -> transformation, nums of white cell -> identify -> drawAxis  
-  - marketdetection.cpp : image -> detectMarkers -> drawAxis  
+  - marketdetection_2.cpp : image -> detectMarkers -> drawAxis  
 
 ----
   
