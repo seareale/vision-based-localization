@@ -18,7 +18,6 @@ Screenshot
 
 - contour  
 <img src="./img/contour.png" width="25%" >
-<a width="25%">contour</a>
 
 - axis
 <img src="./img/axis.png" width="25%" >
