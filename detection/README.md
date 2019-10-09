@@ -8,6 +8,7 @@ $ ./markerdetection
 - update(code simplification)  
   - markerdetection.cpp : image -> greyscale -> contour -> transformation, nums of white cell -> identify -> drawAxis  
   - marketdetection_2.cpp : image -> detectMarkers -> drawAxis  
+    No need "dictionary.hpp"
 
 ----
   
