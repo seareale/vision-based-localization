@@ -3,8 +3,14 @@ before do this, create markers and ChArUco board for calibration
 <pre>
 $ g++ -o markerdetection markerdetection.cpp $(pkg-config opencv4 --cflags --libs)
 $ ./markerdetection
-</pre>
+</pre>  
 
+- update(code simplification)  
+  - markerdetection.cpp : image -> greyscale -> contour -> transformation, nums of white cell -> identify -> drawAxis  
+  - marketdetection.cpp : image -> detectMarkers -> drawAxis  
+
+----
+  
 Screenshot
 ----
 ![example](./img/axis.png)
