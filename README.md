@@ -56,5 +56,5 @@ OpenGL version : 4.3
    <code> $./viewer (marker ID) (cameara ID) </code>
 
 ### 4. Result 
-  <img src="./_practice/img/result.png" width="60%" >
+  <img src="./_practice/img/result.png">
 ----
