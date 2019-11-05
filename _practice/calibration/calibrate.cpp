@@ -8,7 +8,9 @@
  
 using namespace std;
 using namespace cv;
-
+ 
+/**
+*/
 static bool saveCameraParams(const string &filename, Size imageSize, float aspectRatio, int flags,
     const Mat &cameraMatrix, const Mat &distCoeffs, double totalAvgErr) {
     FileStorage fs(filename, FileStorage::WRITE);
