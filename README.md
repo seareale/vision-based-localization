@@ -3,7 +3,7 @@ OS : Ubuntu 18.04.3 LTS
 OpenCV version : 4.1.1  
 OpenGL version : 4.3  
 
-영상 기반 카메라 위치 추출 및 openGL 연동
+비전 기반 카메라 위치 추출 및 openGL 연동
 
 ----
 
