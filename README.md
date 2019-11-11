@@ -5,6 +5,8 @@ OpenGL version : 4.3
 
 비전 기반 카메라 위치 추출 및 openGL 연동
 
+<img src="./_practice/img/result_object.png" width="60%">
+
 ----
 
 #### Required Library
@@ -59,5 +61,9 @@ OpenGL version : 4.3
 
 ### 4. Result 
   <img src="./_practice/img/result.png">
+  
+  - 2019.11.12_ 삼각형, 사각형 오브젝트 추가
+  <img src="./_practice/img/result_object.png">
+  <img src="./_practice/img/result_object2.png">  
   
 ----
