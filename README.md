@@ -14,6 +14,7 @@ OpenGL version : 4.3
    <img src="./_practice/img/add_menu.png" width="40%">
  - openGL 상 카메라 시점 변환
  - 움직이는 object
+ - assimp 모델
  - 프레임 향상, 스레드 구현
  
 ----
