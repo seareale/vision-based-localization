@@ -49,7 +49,7 @@ OpenGL version : 4.3
 1) In "KnuMakerViewer", <code>$ cmake CMakeLists.txt</code>
 2) create <code>viewer</code> by <code>$ make</code> 
 
-#### Error  
+#### Error - 하드웨어 성능 차이
 - GLSL 3.30 is not supported : In <code>./KnuMarkerViewer/shader/grid.vs</code>, change like this.  
   <pre>
   #version 130
