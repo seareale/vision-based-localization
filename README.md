@@ -10,7 +10,8 @@ OpenGL version : 4.3
 < 목표 >  
  - 위치 추출 : 완료
  - openGL 연동 : 완료
- - dear imgui 메뉴 추가 : 진행중(zoom, bg-color, object 추가완료)
+ - dear imgui 메뉴 추가 : 진행중(zoom, bg-color, object 추가완료)  
+   <img src="./_practice/img/add_menu.png" width="40%">
  - openGL 상 카메라 시점 변환
  - 움직이는 object
  - 프레임 향상, 스레드 구현
