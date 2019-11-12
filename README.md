@@ -67,7 +67,8 @@ OpenGL version : 4.3
 1) <code> $./viewer </code>  
    default - marker ID : 0, camera ID : 0
 2) <code> $./viewer (marker ID) </code>  
-   <code> $./viewer (marker ID) (cameara ID) </code>
+   <code> $./viewer (marker ID) (cameara ID) </code>  
+   -> imgui 메뉴로 통합 예정
 
 ### 4. Result 
   <img src="./_practice/img/result.png">
