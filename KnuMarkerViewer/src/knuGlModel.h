@@ -33,10 +33,9 @@ class KOglGrid: public KOglBase {
 	public:
 		KOglGrid(
 				SYE::Shader *pShader
-				, unsigned int rows = 20
-				, unsigned int cols = 20
-				, float unit = 0.5f
-				, glm::mat4 mv = glm::mat4(1.0f)
+				, unsigned int rows = 10
+				, unsigned int cols = 10
+				, float unit = 0.1f
 				, glm::vec3 color = glm::vec3(0.7f, 0.7f, 0.7f)
 				);
 		virtual ~KOglGrid();
@@ -46,13 +45,15 @@ class KOglGrid: public KOglBase {
 ////////////////////////////////////////////////////////////////////////////////////
 
 enum eKOglObjectType {
-	KObjTriangle = 0,
+	KObjTriangle,
 	KObjRectangle,
 	KObjCircle,
+	KObEtc,
 };
 
 class KOglObject: public KOglBase {
 	private:
+		int type;
 	protected:
 	public:
 		KOglObject();
@@ -61,8 +62,10 @@ class KOglObject: public KOglBase {
 		void initialize(
 				SYE::Shader *pShader
 				, eKOglObjectType type
-				, glm::vec3 ptRD = glm::vec3(0, 10, 0)	// Size, 원점은 고정, Right-Down 값만 지정함.
+				, float unit = 0.1f
+				, glm::vec3 color = glm::vec3(0.4f, 0.3f, 0.5f)
 				);
+		void render(glm::mat4 view, glm::mat4 proj);
 
 };
 

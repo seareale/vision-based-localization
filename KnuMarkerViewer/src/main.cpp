@@ -142,7 +142,7 @@ int main(int argc, char** argv) {
 	KOglGrid objGrid(&shaderGrid);
 
 	KOglObject objTriangle;
-	objTriangle.initialize(&shaderTriangle, KObjTriangle);
+	objTriangle.initialize(&shaderTriangle, KObjTriangle); // KObjTriangle, KObjRectangle
 
 	cv::Mat imgShow;
 	unsigned int uiCamImgId = 0;
