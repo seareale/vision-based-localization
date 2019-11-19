@@ -10,13 +10,20 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <thread>
+#include <unistd.h>
+
 using namespace std;
 using namespace cv;
 
 class KCvCamera {
 	private:
 		int camNum=0;
-		glm::mat4 mCamPose;
+		VideoCapture mCapture;
+
+		bool threadMode;
+		std::mutex mtx;
+		cv::Mat cpyImg;
 
 		int dictionaryId = 10;//DICT_6X6_250=10
 		Ptr<aruco::Dictionary> dictionary = aruco::getPredefinedDictionary(aruco::PREDEFINED_DICTIONARY_NAME(dictionaryId));
@@ -26,13 +33,13 @@ class KCvCamera {
 		bool getArucoMarkers(cv::Mat img, vector< int > &ids, vector< vector< Point2f > > &corners);
 
 	public:
-		VideoCapture mCapture;
 		KCvCamera();
 		virtual ~KCvCamera();
 
+		void getCamImage_thread();
 		bool getCamImage(cv::Mat &img);
 
-		bool init(int camNum_get, bool bThreadMode = false);
+		bool init(int camNum_get, bool bThreadMode = true);
 		void close();
 		bool isOpened() { return mCapture.isOpened(); }
 		bool getMarkerPose(int markId, glm::mat4 &camPose, cv::Mat &img, int cols = 320);

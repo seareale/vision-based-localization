@@ -42,14 +42,18 @@ int main(int argc, char** argv) {
 	// default : camera = 0, markId = 0
 	int cameraId = 0;
 	int markId = 0;
+	int threadMode = 0;
 
 	// ./viewer (markId) (cameraId)
 	if( argc >= 2 ) {
 		markId= atoi(argv[1]);
 		if(argc == 3){
-			cameraId = atoi(argv[2]);
+			threadMode = atoi(argv[2]);
 		}
-		else{
+		else if(argc == 4){
+			cameraId = atoi(argv[3]);
+		}
+		else if(argc > 4){
 			cout << "parameter error" << endl;
 			exit(0);
 		}
@@ -125,7 +129,11 @@ int main(int argc, char** argv) {
 	//bool show_demo_window = true;
 	bool show_demo_window = false;
 	bool show_another_window = false;
+
+	// imgui 변수
 	ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
+	static float f = 0.5f;
+	static int clickButton = 0;
 
 	////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -144,18 +152,22 @@ int main(int argc, char** argv) {
 	KOglObject objTriangle;
 	objTriangle.initialize(&shaderTriangle, KObjTriangle); // KObjTriangle, KObjRectangle
 
+	KOglObject objRectangle;
+	objRectangle.initialize(&shaderTriangle, KObjRectangle); // KObjTriangle, KObjRectangle
+
+
 	cv::Mat imgShow;
 	unsigned int uiCamImgId = 0;
 	glGenTextures(1, &uiCamImgId);
 
 	//if(!cvCam.init(0, true)) {		// Thread mode로 사용 시
-	if(!cvCam.init(cameraId)) {
+	if(!cvCam.init(cameraId, threadMode)) {
 	}
 
 	// camera, openCV window
 	namedWindow("OPEN_CAM", WINDOW_NORMAL);
 	resizeWindow("OPEN_CAM", 640,480);
-
+	
 	// Main loop
 	while (!glfwWindowShouldClose(window)) {
 		// Poll and handle events (inputs, window resize, etc.)
@@ -176,23 +188,21 @@ int main(int argc, char** argv) {
 
 		// 2. Show a simple window that we create ourselves. We use a Begin/End pair to created a named window.
 		{
-			static float f = 0.0f;
-			static int counter = 0;
+			ImGui::Begin("Setting Box");                          // Create a window called "Hello, world!" and append into it.
+			
+			ImGui::Text("Zoom");
+			ImGui::SliderFloat("", &f, 0.1f, 5.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
+			
+			ImGui::Text("bg-color");
+			ImGui::ColorEdit3("", (float*)&clear_color); // Edit 3 floats representing a color
 
-			ImGui::Begin("Hello, world!");                          // Create a window called "Hello, world!" and append into it.
-
-			ImGui::Text("This is some useful text.");               // Display some text (you can use a format strings too)
-			ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
-			ImGui::Checkbox("Another Window", &show_another_window);
-
-			ImGui::SliderFloat("float", &f, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
-			ImGui::ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
-
-			if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
-				counter++;
+			ImGui::Text("Object");
+			if (ImGui::Button("Triangle"))
+				clickButton = 0;
 			ImGui::SameLine();
-			ImGui::Text("counter = %d", counter);
-
+			if (ImGui::Button("Rectangle"))
+				clickButton = 1;
+				
 			ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 
 			if(!imgShow.empty()) {
@@ -216,6 +226,8 @@ int main(int argc, char** argv) {
 		// Set opengl view projection matrix.
 		if(cvCam.getCamImage(imgShow)){
 			if(cvCam.isOpened() && cvCam.getMarkerPose(markId, matView, imgShow)) {
+				// zoom 적용
+				matView[3][2] *= f;
 			} else {
 				// Set default view projection matrix.
 				matView = glm::mat4(1.0f);
@@ -223,6 +235,7 @@ int main(int argc, char** argv) {
 			}
 			imshow("OPEN_CAM",imgShow);
 		}
+
 
 		// Rendering
 		ImGui::Render();
@@ -240,7 +253,18 @@ int main(int argc, char** argv) {
 		objGrid.render(matView, matProj);
 
 		// Rendering Opengl objects. 	////////////////////////////////////////////////////////////
-		objTriangle.render(matView, matProj);
+		switch(clickButton){
+			case 0:
+				objTriangle.render(matView, matProj);	
+				break;
+
+			case 1:
+				objRectangle.render(matView, matProj);
+				break;
+			
+			default :
+				break;
+		}
 
 		////////////////////////////////////////////////////////////////////////////////////////////
 

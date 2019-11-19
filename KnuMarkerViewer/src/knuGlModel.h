@@ -33,8 +33,8 @@ class KOglGrid: public KOglBase {
 	public:
 		KOglGrid(
 				SYE::Shader *pShader
-				, unsigned int rows = 10
-				, unsigned int cols = 10
+				, unsigned int rows = 100
+				, unsigned int cols = 100
 				, float unit = 0.1f
 				, glm::vec3 color = glm::vec3(0.7f, 0.7f, 0.7f)
 				);
