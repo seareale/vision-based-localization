@@ -8,14 +8,15 @@ OpenGL version : 4.3
 <img src="./_practice/img/result_object.gif" width="60%">
 
 < 목표 >  
- - 위치 추출 : 완료
- - openGL 연동 : 완료
+ - ~~위치 추출 : 완료~~  
+ - ~~openGL 연동 : 완료~~  
+ - ~~프레임 향상, 스레드 구현 : 완료~~  
  - dear imgui 메뉴 추가 : 진행중(zoom, bg-color, object 추가완료)  
    <img src="./_practice/img/add_menu.png" width="40%">
  - openGL 상 카메라 시점 변환
- - 움직이는 object
  - assimp 모델
- - 프레임 향상, 스레드 구현
+ - 움직이는 object
+ 
  
 ----
 
@@ -65,10 +66,13 @@ OpenGL version : 4.3
 
 ### 3. Run
 1) <code> $./viewer </code>  
-   default - marker ID : 0, camera ID : 0
-2) <code> $./viewer (marker ID) </code>  
-   <code> $./viewer (marker ID) (cameara ID) </code>  
-   -> imgui 메뉴로 통합 예정
+   default - marker ID : 0, threadMode : 0(= false), camera ID : 0  
+2) <code> $./viewer (marker ID) </code>   
+   <code> $./viewer (marker ID) (threadMode)</code>  
+   <code> $./viewer (marker ID) (threadMode) (cameara ID)</code>   
+   
+   -> 프레임 향상을 위해 threadMode 활성화 시 <code>1</code> 입력   
+   -> maker ID : imgui 메뉴로 통합 예정
 
 ### 4. Result 
   <img src="./_practice/img/result.png">
